@@ -385,13 +385,19 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
           localized: false;
         };
       }>;
-    navbar: Attribute.Component<'layout.navbar', true> &
+    navbar: Attribute.Component<'layout.navbar'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    footer: Attribute.Component<'layout.footer', true> &
+    footer: Attribute.Component<'layout.footer'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

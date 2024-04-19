@@ -105,7 +105,8 @@ export interface SharedButton extends Schema.Component {
   };
   attributes: {
     label: Attribute.String & Attribute.Required;
-    variant: Attribute.Enumeration<['contained', 'outlined', 'text']>;
+    variant: Attribute.Enumeration<['primary', 'secondary']> &
+      Attribute.DefaultTo<'primary'>;
     newTab: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     href: Attribute.String;
   };

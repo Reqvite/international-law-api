@@ -14,10 +14,10 @@
     "variant": {
       "type": "enumeration",
       "enum": [
-        "contained",
-        "outlined",
-        "text"
-      ]
+        "primary",
+        "secondary"
+      ],
+      "default": "primary"
     },
     "newTab": {
       "type": "boolean",
