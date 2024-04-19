@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_headings",
+  "info": {
+    "displayName": "Heading",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

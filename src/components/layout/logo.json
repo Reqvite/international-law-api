@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_layout_logos",
+  "info": {
+    "displayName": "logo",
+    "icon": "cup"
+  },
+  "options": {},
+  "attributes": {
+    "img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

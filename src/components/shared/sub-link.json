@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_shared_sub_links",
+  "info": {
+    "displayName": "SubLink",
+    "icon": "arrowUp",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "subLabel": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

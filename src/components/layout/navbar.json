@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_layout_navbars",
+  "info": {
+    "displayName": "Navbar",
+    "icon": "map-signs",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.logo"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.button"
+    }
+  }
+}

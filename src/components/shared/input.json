@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_inputs",
+  "info": {
+    "displayName": "Input",
+    "icon": "chartCircle"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "email",
+        "number",
+        "tel"
+      ],
+      "required": true
+    }
+  }
+}
