@@ -24,7 +24,6 @@ export interface BlocksHero extends Schema.Component {
     description: Attribute.Text;
     image: Attribute.Media;
     buttons: Attribute.Component<'shared.button', true>;
-    benefits: Attribute.Component<'blocks.benefits', true>;
   };
 }
 
@@ -93,6 +92,7 @@ export interface LayoutNavbar extends Schema.Component {
     logo: Attribute.Component<'layout.logo'>;
     links: Attribute.Component<'shared.link', true>;
     buttons: Attribute.Component<'shared.button', true>;
+    input: Attribute.Component<'shared.input'>;
   };
 }
 
@@ -142,11 +142,13 @@ export interface SharedInput extends Schema.Component {
   info: {
     displayName: 'Input';
     icon: 'chartCircle';
+    description: '';
   };
   attributes: {
     label: Attribute.String & Attribute.Required;
     type: Attribute.Enumeration<['text', 'email', 'number', 'tel']> &
       Attribute.Required;
+    defaultValue: Attribute.String;
   };
 }
 
