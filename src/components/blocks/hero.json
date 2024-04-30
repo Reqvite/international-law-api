@@ -26,11 +26,6 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.button"
-    },
-    "benefits": {
-      "type": "component",
-      "repeatable": true,
-      "component": "blocks.benefits"
     }
   }
 }
