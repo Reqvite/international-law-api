@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blocks_recent_updates",
+  "info": {
+    "displayName": "RecentUpdates",
+    "icon": "gate",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "recentArticles": {
+      "type": "component",
+      "repeatable": true,
+      "required": false,
+      "component": "articles.recent-article"
+    }
+  }
+}

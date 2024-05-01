@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages",
+  "collectionName": "articles",
   "info": {
-    "singularName": "page",
-    "pluralName": "pages",
-    "displayName": "Page",
-    "description": ""
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article"
   },
   "options": {
     "draftAndPublish": true
@@ -19,26 +18,30 @@
     "title": {
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       },
       "type": "string",
       "required": true
     },
-    "sections": {
+    "description": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "dynamiczone",
-      "components": [
-        "blocks.benefits",
-        "blocks.hero",
-        "blocks.submit-form",
-        "blocks.subscribe-form",
-        "blocks.recent-updates"
-      ]
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "uid",
+      "targetField": "title",
+      "required": true
     }
   }
 }

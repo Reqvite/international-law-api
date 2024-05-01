@@ -1,5 +1,18 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ArticlesRecentArticle extends Schema.Component {
+  collectionName: 'components_articles_recent_articles';
+  info: {
+    displayName: 'RecentArticle';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.String;
+    href: Attribute.String;
+    newTab: Attribute.Boolean;
+  };
+}
+
 export interface BlocksBenefits extends Schema.Component {
   collectionName: 'components_blocks_benefits';
   info: {
@@ -21,6 +34,18 @@ export interface BlocksHero extends Schema.Component {
   };
   attributes: {
     sliders: Attribute.Component<'shared.hero-item', true>;
+  };
+}
+
+export interface BlocksRecentUpdates extends Schema.Component {
+  collectionName: 'components_blocks_recent_updates';
+  info: {
+    displayName: 'RecentUpdates';
+    icon: 'gate';
+    description: '';
+  };
+  attributes: {
+    recentArticles: Attribute.Component<'articles.recent-article', true>;
   };
 }
 
@@ -200,6 +225,20 @@ export interface SharedMetaSocial extends Schema.Component {
   };
 }
 
+export interface SharedRecentList extends Schema.Component {
+  collectionName: 'components_shared_recent_lists';
+  info: {
+    displayName: 'RecentList';
+    icon: 'connector';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.String & Attribute.Required;
+    href: Attribute.String;
+    newTab: Attribute.Boolean & Attribute.Required;
+  };
+}
+
 export interface SharedSeo extends Schema.Component {
   collectionName: 'components_shared_seos';
   info: {
@@ -259,8 +298,10 @@ export interface SharedSubLink extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'articles.recent-article': ArticlesRecentArticle;
       'blocks.benefits': BlocksBenefits;
       'blocks.hero': BlocksHero;
+      'blocks.recent-updates': BlocksRecentUpdates;
       'blocks.submit-form': BlocksSubmitForm;
       'blocks.subscribe-form': BlocksSubscribeForm;
       'layout.footer': LayoutFooter;
@@ -273,6 +314,7 @@ declare module '@strapi/types' {
       'shared.input': SharedInput;
       'shared.link': SharedLink;
       'shared.meta-social': SharedMetaSocial;
+      'shared.recent-list': SharedRecentList;
       'shared.seo': SharedSeo;
       'shared.social-link': SharedSocialLink;
       'shared.sub-link': SharedSubLink;
