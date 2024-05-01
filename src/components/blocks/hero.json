@@ -7,25 +7,10 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
-    },
-    "description": {
-      "type": "text"
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "buttons": {
+    "sliders": {
       "type": "component",
       "repeatable": true,
-      "component": "shared.button"
+      "component": "shared.hero-item"
     }
   }
 }

@@ -20,10 +20,7 @@ export interface BlocksHero extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.Text;
-    image: Attribute.Media;
-    buttons: Attribute.Component<'shared.button', true>;
+    sliders: Attribute.Component<'shared.hero-item', true>;
   };
 }
 
@@ -134,6 +131,20 @@ export interface SharedHeading extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     description: Attribute.String;
+  };
+}
+
+export interface SharedHeroItem extends Schema.Component {
+  collectionName: 'components_shared_hero_items';
+  info: {
+    displayName: 'HeroItem';
+    icon: 'arrowUp';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.String;
+    image: Attribute.Media & Attribute.Required;
+    buttons: Attribute.Component<'shared.button', true>;
   };
 }
 
@@ -258,6 +269,7 @@ declare module '@strapi/types' {
       'shared.button': SharedButton;
       'shared.checkbox': SharedCheckbox;
       'shared.heading': SharedHeading;
+      'shared.hero-item': SharedHeroItem;
       'shared.input': SharedInput;
       'shared.link': SharedLink;
       'shared.meta-social': SharedMetaSocial;
