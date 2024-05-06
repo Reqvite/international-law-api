@@ -7,11 +7,11 @@
   },
   "options": {},
   "attributes": {
-    "recentArticles": {
-      "type": "component",
-      "repeatable": true,
-      "required": false,
-      "component": "articles.recent-article"
+    "title1": {
+      "type": "string"
+    },
+    "title2": {
+      "type": "string"
     }
   }
 }

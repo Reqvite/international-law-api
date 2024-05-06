@@ -794,6 +794,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     singularName: 'article';
     pluralName: 'articles';
     displayName: 'Article';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -810,6 +811,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
+      }> &
+      Attribute.SetMinMaxLength<{
+        maxLength: 100;
       }>;
     description: Attribute.String &
       Attribute.Required &

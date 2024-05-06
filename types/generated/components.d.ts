@@ -1,18 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ArticlesRecentArticle extends Schema.Component {
-  collectionName: 'components_articles_recent_articles';
-  info: {
-    displayName: 'RecentArticle';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.String;
-    href: Attribute.String;
-    newTab: Attribute.Boolean;
-  };
-}
-
 export interface BlocksBenefits extends Schema.Component {
   collectionName: 'components_blocks_benefits';
   info: {
@@ -45,7 +32,8 @@ export interface BlocksRecentUpdates extends Schema.Component {
     description: '';
   };
   attributes: {
-    recentArticles: Attribute.Component<'articles.recent-article', true>;
+    title1: Attribute.String;
+    title2: Attribute.String;
   };
 }
 
@@ -298,7 +286,6 @@ export interface SharedSubLink extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'articles.recent-article': ArticlesRecentArticle;
       'blocks.benefits': BlocksBenefits;
       'blocks.hero': BlocksHero;
       'blocks.recent-updates': BlocksRecentUpdates;
