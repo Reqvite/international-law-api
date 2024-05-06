@@ -41,13 +41,13 @@ export interface BlocksSubmitForm extends Schema.Component {
   collectionName: 'components_blocks_submit_forms';
   info: {
     displayName: 'SubmitForm';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     description: Attribute.Text;
-    inputs: Attribute.Component<'shared.input', true>;
-    checkboxes: Attribute.Component<'shared.checkbox', true>;
     submitButton: Attribute.Component<'shared.button'>;
+    options: Attribute.Component<'form.form-option', true>;
   };
 }
 
@@ -62,6 +62,24 @@ export interface BlocksSubscribeForm extends Schema.Component {
     description: Attribute.Text;
     inputSubscribe: Attribute.Component<'shared.input'>;
     subscribeButton: Attribute.Component<'shared.button'>;
+  };
+}
+
+export interface FormFormOption extends Schema.Component {
+  collectionName: 'components_form_form_options';
+  info: {
+    displayName: 'FormOption';
+    icon: 'file';
+    description: '';
+  };
+  attributes: {
+    inputId: Attribute.String & Attribute.Required;
+    variant: Attribute.Enumeration<['input', 'select']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'input'>;
+    name: Attribute.String & Attribute.Required;
+    isRequired: Attribute.Boolean & Attribute.DefaultTo<false>;
+    defaultValue: Attribute.String;
   };
 }
 
@@ -291,6 +309,7 @@ declare module '@strapi/types' {
       'blocks.recent-updates': BlocksRecentUpdates;
       'blocks.submit-form': BlocksSubmitForm;
       'blocks.subscribe-form': BlocksSubscribeForm;
+      'form.form-option': FormFormOption;
       'layout.footer': LayoutFooter;
       'layout.logo': LayoutLogo;
       'layout.navbar': LayoutNavbar;

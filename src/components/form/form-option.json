@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_form_form_options",
+  "info": {
+    "displayName": "FormOption",
+    "icon": "file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "inputId": {
+      "type": "string",
+      "required": true
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "input",
+        "select"
+      ],
+      "default": "input",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "isRequired": {
+      "type": "boolean",
+      "default": false
+    },
+    "defaultValue": {
+      "type": "string"
+    }
+  }
+}

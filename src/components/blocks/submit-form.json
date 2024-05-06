@@ -1,7 +1,8 @@
 {
   "collectionName": "components_blocks_submit_forms",
   "info": {
-    "displayName": "SubmitForm"
+    "displayName": "SubmitForm",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,20 +12,15 @@
     "description": {
       "type": "text"
     },
-    "inputs": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.input"
-    },
-    "checkboxes": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.checkbox"
-    },
     "submitButton": {
       "type": "component",
       "repeatable": false,
       "component": "shared.button"
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "form.form-option"
     }
   }
 }
