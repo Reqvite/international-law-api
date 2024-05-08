@@ -12,6 +12,11 @@
     },
     "title2": {
       "type": "string"
+    },
+    "list1": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.card"
     }
   }
 }

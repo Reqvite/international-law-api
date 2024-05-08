@@ -34,6 +34,7 @@ export interface BlocksRecentUpdates extends Schema.Component {
   attributes: {
     title1: Attribute.String;
     title2: Attribute.String;
+    list1: Attribute.Component<'cards.card', true>;
   };
 }
 
@@ -62,6 +63,22 @@ export interface BlocksSubscribeForm extends Schema.Component {
     description: Attribute.Text;
     inputSubscribe: Attribute.Component<'shared.input'>;
     subscribeButton: Attribute.Component<'shared.button'>;
+  };
+}
+
+export interface CardsCard extends Schema.Component {
+  collectionName: 'components_cards_cards';
+  info: {
+    displayName: 'Card';
+    icon: 'apps';
+  };
+  attributes: {
+    image: Attribute.Media;
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.String;
+    href: Attribute.String;
+    variant: Attribute.Enumeration<['small', 'medium', 'large']> &
+      Attribute.Required;
   };
 }
 
@@ -309,6 +326,7 @@ declare module '@strapi/types' {
       'blocks.recent-updates': BlocksRecentUpdates;
       'blocks.submit-form': BlocksSubmitForm;
       'blocks.subscribe-form': BlocksSubscribeForm;
+      'cards.card': CardsCard;
       'form.form-option': FormFormOption;
       'layout.footer': LayoutFooter;
       'layout.logo': LayoutLogo;
