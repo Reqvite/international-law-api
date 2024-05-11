@@ -97,6 +97,19 @@ export interface FormFormOption extends Schema.Component {
     name: Attribute.String & Attribute.Required;
     isRequired: Attribute.Boolean & Attribute.DefaultTo<false>;
     defaultValue: Attribute.String;
+    options: Attribute.Component<'form.select-option', true>;
+  };
+}
+
+export interface FormSelectOption extends Schema.Component {
+  collectionName: 'components_form_select_options';
+  info: {
+    displayName: 'selectOption';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    value: Attribute.Integer & Attribute.Required;
   };
 }
 
@@ -248,20 +261,6 @@ export interface SharedMetaSocial extends Schema.Component {
   };
 }
 
-export interface SharedRecentList extends Schema.Component {
-  collectionName: 'components_shared_recent_lists';
-  info: {
-    displayName: 'RecentList';
-    icon: 'connector';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.String & Attribute.Required;
-    href: Attribute.String;
-    newTab: Attribute.Boolean & Attribute.Required;
-  };
-}
-
 export interface SharedSeo extends Schema.Component {
   collectionName: 'components_shared_seos';
   info: {
@@ -328,6 +327,7 @@ declare module '@strapi/types' {
       'blocks.subscribe-form': BlocksSubscribeForm;
       'cards.card': CardsCard;
       'form.form-option': FormFormOption;
+      'form.select-option': FormSelectOption;
       'layout.footer': LayoutFooter;
       'layout.logo': LayoutLogo;
       'layout.navbar': LayoutNavbar;
@@ -338,7 +338,6 @@ declare module '@strapi/types' {
       'shared.input': SharedInput;
       'shared.link': SharedLink;
       'shared.meta-social': SharedMetaSocial;
-      'shared.recent-list': SharedRecentList;
       'shared.seo': SharedSeo;
       'shared.social-link': SharedSocialLink;
       'shared.sub-link': SharedSubLink;
