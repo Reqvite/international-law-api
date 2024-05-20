@@ -37,7 +37,8 @@
         "blocks.hero",
         "blocks.submit-form",
         "blocks.subscribe-form",
-        "blocks.recent-updates"
+        "blocks.recent-updates",
+        "blocks.literature"
       ]
     }
   }

@@ -22,6 +22,7 @@ module.exports = ({ env }) => ({
         mode: "allow",
         uids: {
           "api::article.article": true,
+          "api::literature.literature": true,
         },
       },
       plugins: {

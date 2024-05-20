@@ -24,6 +24,23 @@ export interface BlocksHero extends Schema.Component {
   };
 }
 
+export interface BlocksLiterature extends Schema.Component {
+  collectionName: 'components_blocks_literature';
+  info: {
+    displayName: 'Literature';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    list: Attribute.Relation<
+      'blocks.literature',
+      'oneToMany',
+      'api::literature.literature'
+    >;
+  };
+}
+
 export interface BlocksRecentUpdates extends Schema.Component {
   collectionName: 'components_blocks_recent_updates';
   info: {
@@ -322,6 +339,7 @@ declare module '@strapi/types' {
     export interface Components {
       'blocks.benefits': BlocksBenefits;
       'blocks.hero': BlocksHero;
+      'blocks.literature': BlocksLiterature;
       'blocks.recent-updates': BlocksRecentUpdates;
       'blocks.submit-form': BlocksSubmitForm;
       'blocks.subscribe-form': BlocksSubscribeForm;
