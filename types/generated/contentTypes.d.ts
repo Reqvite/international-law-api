@@ -930,6 +930,7 @@ export interface ApiLiteratureLiterature extends Schema.CollectionType {
     singularName: 'literature';
     pluralName: 'literatures';
     displayName: 'Literature';
+    description: '';
   };
   options: {
     draftAndPublish: true;

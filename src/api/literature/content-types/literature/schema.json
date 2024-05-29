@@ -4,7 +4,8 @@
   "info": {
     "singularName": "literature",
     "pluralName": "literatures",
-    "displayName": "Literature"
+    "displayName": "Literature",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -33,9 +34,7 @@
       "type": "string"
     },
     "href": {
-      "allowedTypes": [
-        "files"
-      ],
+      "allowedTypes": ["files"],
       "type": "media",
       "multiple": false,
       "pluginOptions": {
