@@ -41,6 +41,23 @@ export interface BlocksLiterature extends Schema.Component {
   };
 }
 
+export interface BlocksNewsAndArticles extends Schema.Component {
+  collectionName: 'components_blocks_news_and_articles';
+  info: {
+    displayName: 'NewsAndArticles';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    button: Attribute.Component<'shared.button'>;
+    list: Attribute.Relation<
+      'blocks.news-and-articles',
+      'oneToMany',
+      'api::article.article'
+    >;
+  };
+}
+
 export interface BlocksRecentUpdates extends Schema.Component {
   collectionName: 'components_blocks_recent_updates';
   info: {
@@ -340,6 +357,7 @@ declare module '@strapi/types' {
       'blocks.benefits': BlocksBenefits;
       'blocks.hero': BlocksHero;
       'blocks.literature': BlocksLiterature;
+      'blocks.news-and-articles': BlocksNewsAndArticles;
       'blocks.recent-updates': BlocksRecentUpdates;
       'blocks.submit-form': BlocksSubmitForm;
       'blocks.subscribe-form': BlocksSubscribeForm;

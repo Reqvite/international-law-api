@@ -811,16 +811,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         i18n: {
           localized: true;
         };
-      }> &
-      Attribute.SetMinMaxLength<{
-        maxLength: 100;
-      }>;
-    description: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
       }>;
     slug: Attribute.UID<'api::article.article', 'title'> &
       Attribute.Required &
@@ -830,6 +820,25 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         };
       }>;
     category: Attribute.Enumeration<['news', 'announcements', 'articles']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    imgs: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Blocks &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    previewDescription: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1016,7 +1025,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.submit-form',
         'blocks.subscribe-form',
         'blocks.recent-updates',
-        'blocks.literature'
+        'blocks.literature',
+        'blocks.news-and-articles'
       ]
     > &
       Attribute.SetPluginOptions<{

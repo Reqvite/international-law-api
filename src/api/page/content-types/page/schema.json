@@ -38,7 +38,8 @@
         "blocks.submit-form",
         "blocks.subscribe-form",
         "blocks.recent-updates",
-        "blocks.literature"
+        "blocks.literature",
+        "blocks.news-and-articles"
       ]
     }
   }
