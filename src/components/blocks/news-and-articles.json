@@ -15,10 +15,10 @@
       "repeatable": false,
       "component": "shared.button"
     },
-    "list": {
+    "categories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::article.article"
+      "target": "api::article-category.article-category"
     }
   }
 }

@@ -36,17 +36,10 @@
       "required": true
     },
     "category": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "enumeration",
-      "enum": [
-        "news",
-        "announcements",
-        "articles"
-      ]
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::article-category.article-category",
+      "inversedBy": "articles"
     },
     "imgs": {
       "type": "media",

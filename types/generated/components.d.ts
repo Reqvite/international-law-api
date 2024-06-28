@@ -50,10 +50,10 @@ export interface BlocksNewsAndArticles extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     button: Attribute.Component<'shared.button'>;
-    list: Attribute.Relation<
+    categories: Attribute.Relation<
       'blocks.news-and-articles',
       'oneToMany',
-      'api::article.article'
+      'api::article-category.article-category'
     >;
   };
 }

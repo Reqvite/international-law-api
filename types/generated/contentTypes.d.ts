@@ -819,12 +819,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    category: Attribute.Enumeration<['news', 'announcements', 'articles']> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    category: Attribute.Relation<
+      'api::article.article',
+      'manyToOne',
+      'api::article-category.article-category'
+    >;
     imgs: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -865,6 +864,44 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::article.article'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiArticleCategoryArticleCategory
+  extends Schema.CollectionType {
+  collectionName: 'article_categories';
+  info: {
+    singularName: 'article-category';
+    pluralName: 'article-categories';
+    displayName: 'articleCategory';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    articles: Attribute.Relation<
+      'api::article-category.article-category',
+      'oneToMany',
+      'api::article.article'
+    >;
+    slug: Attribute.UID<'api::article-category.article-category', 'title'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article-category.article-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article-category.article-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1069,6 +1106,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::article.article': ApiArticleArticle;
+      'api::article-category.article-category': ApiArticleCategoryArticleCategory;
       'api::global.global': ApiGlobalGlobal;
       'api::literature.literature': ApiLiteratureLiterature;
       'api::page.page': ApiPagePage;

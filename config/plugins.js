@@ -17,6 +17,7 @@ module.exports = ({ env }) => ({
         uids: {
           "api::article.article": true,
           "api::literature.literature": true,
+          "api::article-category.article-category": true,
         },
       },
       plugins: {
