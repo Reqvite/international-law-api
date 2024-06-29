@@ -41,6 +41,24 @@ export interface BlocksLiterature extends Schema.Component {
   };
 }
 
+export interface BlocksManagement extends Schema.Component {
+  collectionName: 'components_blocks_managements';
+  info: {
+    displayName: 'management';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.String;
+    management: Attribute.Relation<
+      'blocks.management',
+      'oneToMany',
+      'api::managment.managment'
+    >;
+    buttons: Attribute.Component<'shared.button', true>;
+  };
+}
+
 export interface BlocksNewsAndArticles extends Schema.Component {
   collectionName: 'components_blocks_news_and_articles';
   info: {
@@ -155,6 +173,12 @@ export interface LayoutFooter extends Schema.Component {
     description: '';
   };
   attributes: {
+    emailTitle: Attribute.String;
+    addressTitle: Attribute.String;
+    phoneTitle: Attribute.String;
+    email: Attribute.String;
+    address: Attribute.String;
+    phone: Attribute.String;
     logo: Attribute.Component<'layout.logo'>;
     links: Attribute.Component<'shared.link', true>;
     socialLinks: Attribute.Component<'shared.social-link', true>;
@@ -357,6 +381,7 @@ declare module '@strapi/types' {
       'blocks.benefits': BlocksBenefits;
       'blocks.hero': BlocksHero;
       'blocks.literature': BlocksLiterature;
+      'blocks.management': BlocksManagement;
       'blocks.news-and-articles': BlocksNewsAndArticles;
       'blocks.recent-updates': BlocksRecentUpdates;
       'blocks.submit-form': BlocksSubmitForm;

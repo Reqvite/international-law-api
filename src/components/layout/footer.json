@@ -7,6 +7,24 @@
   },
   "options": {},
   "attributes": {
+    "emailTitle": {
+      "type": "string"
+    },
+    "addressTitle": {
+      "type": "string"
+    },
+    "phoneTitle": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
     "logo": {
       "type": "component",
       "repeatable": false,

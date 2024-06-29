@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_blocks_managements",
+  "info": {
+    "displayName": "management",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "management": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::managment.managment"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.button"
+    }
+  }
+}

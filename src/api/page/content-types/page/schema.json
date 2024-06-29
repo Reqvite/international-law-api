@@ -39,7 +39,8 @@
         "blocks.subscribe-form",
         "blocks.recent-updates",
         "blocks.literature",
-        "blocks.news-and-articles"
+        "blocks.news-and-articles",
+        "blocks.management"
       ]
     }
   }

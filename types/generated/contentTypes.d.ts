@@ -1031,6 +1031,41 @@ export interface ApiLiteratureLiterature extends Schema.CollectionType {
   };
 }
 
+export interface ApiManagmentManagment extends Schema.CollectionType {
+  collectionName: 'managments';
+  info: {
+    singularName: 'managment';
+    pluralName: 'managments';
+    displayName: 'Managment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    fullname: Attribute.String & Attribute.Required;
+    role: Attribute.String & Attribute.Required;
+    phone: Attribute.String;
+    email: Attribute.String;
+    image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::managment.managment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::managment.managment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
@@ -1063,7 +1098,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.subscribe-form',
         'blocks.recent-updates',
         'blocks.literature',
-        'blocks.news-and-articles'
+        'blocks.news-and-articles',
+        'blocks.management'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1109,6 +1145,7 @@ declare module '@strapi/types' {
       'api::article-category.article-category': ApiArticleCategoryArticleCategory;
       'api::global.global': ApiGlobalGlobal;
       'api::literature.literature': ApiLiteratureLiterature;
+      'api::managment.managment': ApiManagmentManagment;
       'api::page.page': ApiPagePage;
     }
   }
