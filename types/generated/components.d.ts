@@ -12,6 +12,23 @@ export interface BlocksBenefits extends Schema.Component {
   };
 }
 
+export interface BlocksFaculties extends Schema.Component {
+  collectionName: 'components_blocks_faculties';
+  info: {
+    displayName: 'Faculties';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    list: Attribute.Relation<
+      'blocks.faculties',
+      'oneToMany',
+      'api::faculty.faculty'
+    >;
+    description: Attribute.String;
+  };
+}
+
 export interface BlocksHero extends Schema.Component {
   collectionName: 'components_blocks_heroes';
   info: {
@@ -379,6 +396,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'blocks.benefits': BlocksBenefits;
+      'blocks.faculties': BlocksFaculties;
       'blocks.hero': BlocksHero;
       'blocks.literature': BlocksLiterature;
       'blocks.management': BlocksManagement;

@@ -905,6 +905,41 @@ export interface ApiArticleCategoryArticleCategory
   };
 }
 
+export interface ApiFacultyFaculty extends Schema.CollectionType {
+  collectionName: 'faculties';
+  info: {
+    singularName: 'faculty';
+    pluralName: 'faculties';
+    displayName: 'Faculty';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title1: Attribute.String & Attribute.Required;
+    title2: Attribute.String;
+    previewDescription: Attribute.String;
+    image: Attribute.Media & Attribute.Required;
+    slug: Attribute.UID<'api::faculty.faculty', 'title1'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faculty.faculty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faculty.faculty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Schema.SingleType {
   collectionName: 'globals';
   info: {
@@ -1099,7 +1134,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.recent-updates',
         'blocks.literature',
         'blocks.news-and-articles',
-        'blocks.management'
+        'blocks.management',
+        'blocks.faculties'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1143,6 +1179,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::article.article': ApiArticleArticle;
       'api::article-category.article-category': ApiArticleCategoryArticleCategory;
+      'api::faculty.faculty': ApiFacultyFaculty;
       'api::global.global': ApiGlobalGlobal;
       'api::literature.literature': ApiLiteratureLiterature;
       'api::managment.managment': ApiManagmentManagment;

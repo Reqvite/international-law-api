@@ -40,7 +40,8 @@
         "blocks.recent-updates",
         "blocks.literature",
         "blocks.news-and-articles",
-        "blocks.management"
+        "blocks.management",
+        "blocks.faculties"
       ]
     }
   }

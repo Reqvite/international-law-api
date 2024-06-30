@@ -15,8 +15,11 @@ module.exports = ({ env }) => ({
       contentTypeFilter: {
         mode: "allow",
         uids: {
+          "api::global.global": true,
+          "api::page.page": true,
           "api::article.article": true,
           "api::literature.literature": true,
+          "api::faculty.faculty": true,
           "api::article-category.article-category": true,
         },
       },
