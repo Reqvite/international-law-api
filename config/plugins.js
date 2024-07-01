@@ -21,6 +21,7 @@ module.exports = ({ env }) => ({
           "api::literature.literature": true,
           "api::faculty.faculty": true,
           "api::article-category.article-category": true,
+          "api::contact-us-submission.contact-us-submission": true,
         },
       },
       plugins: {

@@ -13,7 +13,11 @@
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["input", "select"],
+      "enum": [
+        "input",
+        "select",
+        "text-area"
+      ],
       "default": "input",
       "required": true
     },
@@ -32,6 +36,14 @@
       "type": "component",
       "repeatable": true,
       "component": "form.select-option"
+    },
+    "inputType": {
+      "type": "enumeration",
+      "enum": [
+        "text",
+        "number",
+        "email"
+      ]
     }
   }
 }

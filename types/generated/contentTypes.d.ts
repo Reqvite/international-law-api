@@ -905,6 +905,40 @@ export interface ApiArticleCategoryArticleCategory
   };
 }
 
+export interface ApiContactUsSubmissionContactUsSubmission
+  extends Schema.CollectionType {
+  collectionName: 'contact_us_submissions';
+  info: {
+    singularName: 'contact-us-submission';
+    pluralName: 'contact-us-submissions';
+    displayName: 'ContactUsSubmission';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    email: Attribute.String & Attribute.Required;
+    theme: Attribute.String & Attribute.Required;
+    message: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-us-submission.contact-us-submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-us-submission.contact-us-submission',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFacultyFaculty extends Schema.CollectionType {
   collectionName: 'faculties';
   info: {
@@ -1146,7 +1180,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.literature',
         'blocks.news-and-articles',
         'blocks.management',
-        'blocks.faculties'
+        'blocks.faculties',
+        'blocks.contact-us'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1196,6 +1231,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::article.article': ApiArticleArticle;
       'api::article-category.article-category': ApiArticleCategoryArticleCategory;
+      'api::contact-us-submission.contact-us-submission': ApiContactUsSubmissionContactUsSubmission;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::global.global': ApiGlobalGlobal;
       'api::literature.literature': ApiLiteratureLiterature;

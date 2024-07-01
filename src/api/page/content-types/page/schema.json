@@ -41,7 +41,8 @@
         "blocks.literature",
         "blocks.news-and-articles",
         "blocks.management",
-        "blocks.faculties"
+        "blocks.faculties",
+        "blocks.contact-us"
       ]
     },
     "seo": {

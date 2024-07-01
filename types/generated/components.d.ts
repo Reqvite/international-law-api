@@ -12,6 +12,19 @@ export interface BlocksBenefits extends Schema.Component {
   };
 }
 
+export interface BlocksContactUs extends Schema.Component {
+  collectionName: 'components_blocks_contactuses';
+  info: {
+    displayName: 'ContactUs';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    mapAddress: Attribute.String & Attribute.Required;
+    options: Attribute.Component<'form.form-option', true>;
+    submitButton: Attribute.Component<'shared.button'>;
+  };
+}
+
 export interface BlocksFaculties extends Schema.Component {
   collectionName: 'components_blocks_faculties';
   info: {
@@ -160,13 +173,14 @@ export interface FormFormOption extends Schema.Component {
   };
   attributes: {
     inputId: Attribute.String & Attribute.Required;
-    variant: Attribute.Enumeration<['input', 'select']> &
+    variant: Attribute.Enumeration<['input', 'select', 'text-area']> &
       Attribute.Required &
       Attribute.DefaultTo<'input'>;
     name: Attribute.String & Attribute.Required;
     isRequired: Attribute.Boolean & Attribute.DefaultTo<false>;
     defaultValue: Attribute.String;
     options: Attribute.Component<'form.select-option', true>;
+    inputType: Attribute.Enumeration<['text', 'number', 'email']>;
   };
 }
 
@@ -396,6 +410,7 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'blocks.benefits': BlocksBenefits;
+      'blocks.contact-us': BlocksContactUs;
       'blocks.faculties': BlocksFaculties;
       'blocks.hero': BlocksHero;
       'blocks.literature': BlocksLiterature;
