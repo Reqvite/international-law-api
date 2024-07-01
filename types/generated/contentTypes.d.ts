@@ -912,6 +912,7 @@ export interface ApiContactUsSubmissionContactUsSubmission
     singularName: 'contact-us-submission';
     pluralName: 'contact-us-submissions';
     displayName: 'ContactUsSubmission';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -921,6 +922,13 @@ export interface ApiContactUsSubmissionContactUsSubmission
     email: Attribute.String & Attribute.Required;
     theme: Attribute.String & Attribute.Required;
     message: Attribute.String & Attribute.Required;
+    status: Attribute.Enumeration<
+      [
+        '\u041D\u043E\u0432\u0438\u0439 \u0437\u0430\u043F\u0438\u0442',
+        '\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u043E '
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0438\u0439 \u0437\u0430\u043F\u0438\u0442'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
