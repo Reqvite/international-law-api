@@ -18,10 +18,13 @@
       "relation": "oneToMany",
       "target": "api::managment.managment"
     },
-    "buttons": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.button"
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

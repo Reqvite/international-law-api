@@ -33,6 +33,16 @@
     "slug": {
       "type": "uid",
       "targetField": "title1"
+    },
+    "management": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::managment.managment",
+      "mappedBy": "faculty"
+    },
+    "managementTitle": {
+      "type": "string",
+      "required": true
     }
   }
 }

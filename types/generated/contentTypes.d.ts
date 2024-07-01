@@ -922,6 +922,12 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
     previewDescription: Attribute.String;
     image: Attribute.Media & Attribute.Required;
     slug: Attribute.UID<'api::faculty.faculty', 'title1'>;
+    management: Attribute.Relation<
+      'api::faculty.faculty',
+      'oneToMany',
+      'api::managment.managment'
+    >;
+    managementTitle: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1083,6 +1089,11 @@ export interface ApiManagmentManagment extends Schema.CollectionType {
     phone: Attribute.String;
     email: Attribute.String;
     image: Attribute.Media;
+    faculty: Attribute.Relation<
+      'api::managment.managment',
+      'manyToOne',
+      'api::faculty.faculty'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1138,6 +1149,12 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.faculties'
       ]
     > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

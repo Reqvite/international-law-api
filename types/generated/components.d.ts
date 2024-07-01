@@ -72,7 +72,7 @@ export interface BlocksManagement extends Schema.Component {
       'oneToMany',
       'api::managment.managment'
     >;
-    buttons: Attribute.Component<'shared.button', true>;
+    image: Attribute.Media;
   };
 }
 
