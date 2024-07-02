@@ -1,23 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface BlocksArticlesCategories extends Schema.Component {
-  collectionName: 'components_blocks_articles_categories';
-  info: {
-    displayName: 'articlesCategories';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    categories: Attribute.Relation<
-      'blocks.articles-categories',
-      'oneToMany',
-      'api::article-category.article-category'
-    >;
-    button: Attribute.Component<'shared.button'>;
-    description: Attribute.String;
-  };
-}
-
 export interface BlocksBenefits extends Schema.Component {
   collectionName: 'components_blocks_benefits';
   info: {
@@ -121,6 +103,8 @@ export interface BlocksNewsAndArticles extends Schema.Component {
       'oneToMany',
       'api::article-category.article-category'
     >;
+    withPagination: Attribute.Boolean;
+    description: Attribute.String;
   };
 }
 
@@ -427,7 +411,6 @@ export interface SharedSubLink extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'blocks.articles-categories': BlocksArticlesCategories;
       'blocks.benefits': BlocksBenefits;
       'blocks.contact-us': BlocksContactUs;
       'blocks.faculties': BlocksFaculties;

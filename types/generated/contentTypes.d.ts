@@ -1189,8 +1189,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.news-and-articles',
         'blocks.management',
         'blocks.faculties',
-        'blocks.contact-us',
-        'blocks.articles-categories'
+        'blocks.contact-us'
       ]
     > &
       Attribute.SetPluginOptions<{
