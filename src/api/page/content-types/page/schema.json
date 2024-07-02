@@ -42,7 +42,8 @@
         "blocks.news-and-articles",
         "blocks.management",
         "blocks.faculties",
-        "blocks.contact-us"
+        "blocks.contact-us",
+        "blocks.articles-categories"
       ]
     },
     "seo": {
@@ -54,6 +55,15 @@
         }
       },
       "component": "shared.seo"
+    },
+    "h1": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     }
   }
 }

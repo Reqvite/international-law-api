@@ -1189,7 +1189,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.news-and-articles',
         'blocks.management',
         'blocks.faculties',
-        'blocks.contact-us'
+        'blocks.contact-us',
+        'blocks.articles-categories'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1198,6 +1199,13 @@ export interface ApiPagePage extends Schema.CollectionType {
         };
       }>;
     seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    h1: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
