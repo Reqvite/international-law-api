@@ -62,12 +62,15 @@ export interface BlocksLiterature extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    list: Attribute.Relation<
+    title: Attribute.String;
+    button: Attribute.Component<'shared.button'>;
+    categories: Attribute.Relation<
       'blocks.literature',
       'oneToMany',
-      'api::literature.literature'
+      'api::literature-category.literature-category'
     >;
+    withPagination: Attribute.Boolean;
+    description: Attribute.String;
   };
 }
 
@@ -105,6 +108,17 @@ export interface BlocksNewsAndArticles extends Schema.Component {
     >;
     withPagination: Attribute.Boolean;
     description: Attribute.String;
+  };
+}
+
+export interface BlocksPageNavigationTabs extends Schema.Component {
+  collectionName: 'components_blocks_page_navigation_tabs';
+  info: {
+    displayName: 'PageNavigationTabs';
+    description: '';
+  };
+  attributes: {
+    options: Attribute.Component<'form.page-option', true>;
   };
 }
 
@@ -183,6 +197,17 @@ export interface FormFormOption extends Schema.Component {
     defaultValue: Attribute.String;
     options: Attribute.Component<'form.select-option', true>;
     inputType: Attribute.Enumeration<['text', 'number', 'email']>;
+  };
+}
+
+export interface FormPageOption extends Schema.Component {
+  collectionName: 'components_form_page_options';
+  info: {
+    displayName: 'pageOption';
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    value: Attribute.String & Attribute.Required;
   };
 }
 
@@ -418,11 +443,13 @@ declare module '@strapi/types' {
       'blocks.literature': BlocksLiterature;
       'blocks.management': BlocksManagement;
       'blocks.news-and-articles': BlocksNewsAndArticles;
+      'blocks.page-navigation-tabs': BlocksPageNavigationTabs;
       'blocks.recent-updates': BlocksRecentUpdates;
       'blocks.submit-form': BlocksSubmitForm;
       'blocks.subscribe-form': BlocksSubscribeForm;
       'cards.card': CardsCard;
       'form.form-option': FormFormOption;
+      'form.page-option': FormPageOption;
       'form.select-option': FormSelectOption;
       'layout.footer': LayoutFooter;
       'layout.logo': LayoutLogo;

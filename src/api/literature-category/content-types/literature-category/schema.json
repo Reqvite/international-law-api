@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "literature_categories",
+  "info": {
+    "singularName": "literature-category",
+    "pluralName": "literature-categories",
+    "displayName": "literatureCategory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "literature": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::literature.literature",
+      "mappedBy": "category"
+    }
+  }
+}

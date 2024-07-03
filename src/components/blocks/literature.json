@@ -8,13 +8,23 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
-    "list": {
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    },
+    "categories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::literature.literature"
+      "target": "api::literature-category.literature-category"
+    },
+    "withPagination": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
     }
   }
 }

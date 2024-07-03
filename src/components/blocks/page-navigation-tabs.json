@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blocks_page_navigation_tabs",
+  "info": {
+    "displayName": "PageNavigationTabs",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "form.page-option"
+    }
+  }
+}

@@ -1077,17 +1077,36 @@ export interface ApiLiteratureLiterature extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    description: Attribute.String &
+    image: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    category: Attribute.Relation<
+      'api::literature.literature',
+      'manyToOne',
+      'api::literature-category.literature-category'
+    >;
+    description: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    href: Attribute.Media &
+    slug: Attribute.UID<'api::literature.literature', 'title'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    file: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -1111,6 +1130,46 @@ export interface ApiLiteratureLiterature extends Schema.CollectionType {
       'api::literature.literature'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiLiteratureCategoryLiteratureCategory
+  extends Schema.CollectionType {
+  collectionName: 'literature_categories';
+  info: {
+    singularName: 'literature-category';
+    pluralName: 'literature-categories';
+    displayName: 'literatureCategory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<
+      'api::literature-category.literature-category',
+      'title'
+    >;
+    literature: Attribute.Relation<
+      'api::literature-category.literature-category',
+      'oneToMany',
+      'api::literature.literature'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::literature-category.literature-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::literature-category.literature-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1189,7 +1248,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.news-and-articles',
         'blocks.management',
         'blocks.faculties',
-        'blocks.contact-us'
+        'blocks.contact-us',
+        'blocks.page-navigation-tabs'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1250,6 +1310,7 @@ declare module '@strapi/types' {
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::global.global': ApiGlobalGlobal;
       'api::literature.literature': ApiLiteratureLiterature;
+      'api::literature-category.literature-category': ApiLiteratureCategoryLiteratureCategory;
       'api::managment.managment': ApiManagmentManagment;
       'api::page.page': ApiPagePage;
     }

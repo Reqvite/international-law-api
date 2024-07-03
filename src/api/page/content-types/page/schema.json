@@ -42,7 +42,8 @@
         "blocks.news-and-articles",
         "blocks.management",
         "blocks.faculties",
-        "blocks.contact-us"
+        "blocks.contact-us",
+        "blocks.page-navigation-tabs"
       ]
     },
     "seo": {

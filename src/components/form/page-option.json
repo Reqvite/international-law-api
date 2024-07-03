@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_form_page_options",
+  "info": {
+    "displayName": "pageOption"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
