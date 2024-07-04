@@ -43,7 +43,8 @@
         "blocks.management",
         "blocks.faculties",
         "blocks.contact-us",
-        "blocks.page-navigation-tabs"
+        "blocks.page-navigation-tabs",
+        "blocks.laws-list"
       ]
     },
     "seo": {

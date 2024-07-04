@@ -54,6 +54,25 @@ export interface BlocksHero extends Schema.Component {
   };
 }
 
+export interface BlocksLawsList extends Schema.Component {
+  collectionName: 'components_blocks_laws_lists';
+  info: {
+    displayName: 'LawsList';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.String;
+    button: Attribute.Component<'shared.button'>;
+    withPagination: Attribute.Boolean;
+    categories: Attribute.Relation<
+      'blocks.laws-list',
+      'oneToMany',
+      'api::law-category.law-category'
+    >;
+  };
+}
+
 export interface BlocksLiterature extends Schema.Component {
   collectionName: 'components_blocks_literature';
   info: {
@@ -440,6 +459,7 @@ declare module '@strapi/types' {
       'blocks.contact-us': BlocksContactUs;
       'blocks.faculties': BlocksFaculties;
       'blocks.hero': BlocksHero;
+      'blocks.laws-list': BlocksLawsList;
       'blocks.literature': BlocksLiterature;
       'blocks.management': BlocksManagement;
       'blocks.news-and-articles': BlocksNewsAndArticles;

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_blocks_laws_lists",
+  "info": {
+    "displayName": "LawsList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    },
+    "withPagination": {
+      "type": "boolean"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::law-category.law-category"
+    }
+  }
+}

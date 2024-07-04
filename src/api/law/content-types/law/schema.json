@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "laws",
+  "info": {
+    "singularName": "law",
+    "pluralName": "laws",
+    "displayName": "Law",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "previewDescription": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::law-category.law-category",
+      "inversedBy": "laws"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "file": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    }
+  }
+}

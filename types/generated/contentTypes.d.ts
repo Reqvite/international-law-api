@@ -1053,6 +1053,76 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
   };
 }
 
+export interface ApiLawLaw extends Schema.CollectionType {
+  collectionName: 'laws';
+  info: {
+    singularName: 'law';
+    pluralName: 'laws';
+    displayName: 'Law';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::law.law', 'title'> & Attribute.Required;
+    previewDescription: Attribute.String;
+    category: Attribute.Relation<
+      'api::law.law',
+      'manyToOne',
+      'api::law-category.law-category'
+    >;
+    description: Attribute.Blocks;
+    file: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::law.law', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::law.law', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLawCategoryLawCategory extends Schema.CollectionType {
+  collectionName: 'law_categories';
+  info: {
+    singularName: 'law-category';
+    pluralName: 'law-categories';
+    displayName: 'LawCategory';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    laws: Attribute.Relation<
+      'api::law-category.law-category',
+      'oneToMany',
+      'api::law.law'
+    >;
+    slug: Attribute.UID<'api::law-category.law-category', 'title'> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::law-category.law-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::law-category.law-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLiteratureLiterature extends Schema.CollectionType {
   collectionName: 'literatures';
   info: {
@@ -1249,7 +1319,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.management',
         'blocks.faculties',
         'blocks.contact-us',
-        'blocks.page-navigation-tabs'
+        'blocks.page-navigation-tabs',
+        'blocks.laws-list'
       ]
     > &
       Attribute.SetPluginOptions<{
@@ -1309,6 +1380,8 @@ declare module '@strapi/types' {
       'api::contact-us-submission.contact-us-submission': ApiContactUsSubmissionContactUsSubmission;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::global.global': ApiGlobalGlobal;
+      'api::law.law': ApiLawLaw;
+      'api::law-category.law-category': ApiLawCategoryLawCategory;
       'api::literature.literature': ApiLiteratureLiterature;
       'api::literature-category.literature-category': ApiLiteratureCategoryLiteratureCategory;
       'api::managment.managment': ApiManagmentManagment;

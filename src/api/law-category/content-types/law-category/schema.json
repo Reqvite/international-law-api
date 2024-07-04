@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "law_categories",
+  "info": {
+    "singularName": "law-category",
+    "pluralName": "law-categories",
+    "displayName": "LawCategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "laws": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::law.law",
+      "mappedBy": "category"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    }
+  }
+}
