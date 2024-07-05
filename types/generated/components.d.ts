@@ -152,6 +152,11 @@ export interface BlocksRecentUpdates extends Schema.Component {
     title1: Attribute.String;
     title2: Attribute.String;
     list1: Attribute.Component<'cards.card', true>;
+    actualArticles: Attribute.Relation<
+      'blocks.recent-updates',
+      'oneToMany',
+      'api::article.article'
+    >;
   };
 }
 
