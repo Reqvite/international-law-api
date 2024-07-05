@@ -824,7 +824,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'manyToOne',
       'api::article-category.article-category'
     >;
-    imgs: Attribute.Media &
+    imgs: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -962,7 +962,7 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
     title1: Attribute.String & Attribute.Required;
     title2: Attribute.String;
     previewDescription: Attribute.String;
-    image: Attribute.Media & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
     slug: Attribute.UID<'api::faculty.faculty', 'title1'>;
     management: Attribute.Relation<
       'api::faculty.faculty',
@@ -1005,7 +1005,7 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
     };
   };
   attributes: {
-    favicon: Attribute.Media &
+    favicon: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -1074,7 +1074,7 @@ export interface ApiLawLaw extends Schema.CollectionType {
       'api::law-category.law-category'
     >;
     description: Attribute.Blocks;
-    file: Attribute.Media;
+    file: Attribute.Media<'files'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1147,7 +1147,7 @@ export interface ApiLiteratureLiterature extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    image: Attribute.Media &
+    image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1172,7 +1172,7 @@ export interface ApiLiteratureLiterature extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    file: Attribute.Media &
+    file: Attribute.Media<'files'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1259,7 +1259,7 @@ export interface ApiManagmentManagment extends Schema.CollectionType {
     role: Attribute.String & Attribute.Required;
     phone: Attribute.String;
     email: Attribute.String;
-    image: Attribute.Media;
+    image: Attribute.Media<'images'>;
     faculty: Attribute.Relation<
       'api::managment.managment',
       'manyToOne',

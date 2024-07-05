@@ -107,7 +107,7 @@ export interface BlocksManagement extends Schema.Component {
       'oneToMany',
       'api::managment.managment'
     >;
-    image: Attribute.Media;
+    image: Attribute.Media<'images'>;
   };
 }
 
@@ -195,7 +195,7 @@ export interface CardsCard extends Schema.Component {
     icon: 'apps';
   };
   attributes: {
-    image: Attribute.Media;
+    image: Attribute.Media<'images'>;
     title: Attribute.String & Attribute.Required;
     description: Attribute.String;
     href: Attribute.String;
@@ -274,7 +274,7 @@ export interface LayoutLogo extends Schema.Component {
     icon: 'cup';
   };
   attributes: {
-    img: Attribute.Media & Attribute.Required;
+    img: Attribute.Media<'images'> & Attribute.Required;
     label: Attribute.String;
   };
 }
@@ -344,7 +344,7 @@ export interface SharedHeroItem extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     description: Attribute.String;
-    image: Attribute.Media & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
     buttons: Attribute.Component<'shared.button', true>;
   };
 }
@@ -397,7 +397,7 @@ export interface SharedMetaSocial extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 65;
       }>;
-    image: Attribute.Media;
+    image: Attribute.Media<'images' | 'files' | 'videos'>;
   };
 }
 
@@ -419,7 +419,7 @@ export interface SharedSeo extends Schema.Component {
         minLength: 50;
         maxLength: 160;
       }>;
-    metaImage: Attribute.Media;
+    metaImage: Attribute.Media<'images' | 'files' | 'videos'>;
     metaSocial: Attribute.Component<'shared.meta-social', true>;
     keywords: Attribute.Text;
     metaRobots: Attribute.String;
