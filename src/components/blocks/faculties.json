@@ -10,10 +10,10 @@
       "type": "string",
       "required": true
     },
-    "list": {
+    "categories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::faculty.faculty"
+      "target": "api::faculty-category.faculty-category"
     },
     "description": {
       "type": "string"

@@ -958,18 +958,56 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    title1: Attribute.String & Attribute.Required;
-    title2: Attribute.String;
-    previewDescription: Attribute.String;
-    image: Attribute.Media<'images'> & Attribute.Required;
-    slug: Attribute.UID<'api::faculty.faculty', 'title1'>;
+    title1: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title2: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    previewDescription: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.UID<'api::faculty.faculty', 'title1'> & Attribute.Required;
     management: Attribute.Relation<
       'api::faculty.faculty',
       'oneToMany',
       'api::managment.managment'
     >;
-    managementTitle: Attribute.String & Attribute.Required;
+    managementTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    category: Attribute.Relation<
+      'api::faculty.faculty',
+      'manyToOne',
+      'api::faculty-category.faculty-category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -981,6 +1019,51 @@ export interface ApiFacultyFaculty extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::faculty.faculty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::faculty.faculty',
+      'oneToMany',
+      'api::faculty.faculty'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiFacultyCategoryFacultyCategory
+  extends Schema.CollectionType {
+  collectionName: 'faculty_categories';
+  info: {
+    singularName: 'faculty-category';
+    pluralName: 'faculty-categories';
+    displayName: 'facultyCategory';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    faculties: Attribute.Relation<
+      'api::faculty-category.faculty-category',
+      'oneToMany',
+      'api::faculty.faculty'
+    >;
+    slug: Attribute.UID<'api::faculty-category.faculty-category', 'title'> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faculty-category.faculty-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faculty-category.faculty-category',
       'oneToOne',
       'admin::user'
     > &
@@ -1254,12 +1337,44 @@ export interface ApiManagmentManagment extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    fullname: Attribute.String & Attribute.Required;
-    role: Attribute.String & Attribute.Required;
-    phone: Attribute.String;
-    email: Attribute.String;
-    image: Attribute.Media<'images'>;
+    fullname: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    role: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    phone: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    email: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     faculty: Attribute.Relation<
       'api::managment.managment',
       'manyToOne',
@@ -1280,6 +1395,12 @@ export interface ApiManagmentManagment extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::managment.managment',
+      'oneToMany',
+      'api::managment.managment'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1379,6 +1500,7 @@ declare module '@strapi/types' {
       'api::article-category.article-category': ApiArticleCategoryArticleCategory;
       'api::contact-us-submission.contact-us-submission': ApiContactUsSubmissionContactUsSubmission;
       'api::faculty.faculty': ApiFacultyFaculty;
+      'api::faculty-category.faculty-category': ApiFacultyCategoryFacultyCategory;
       'api::global.global': ApiGlobalGlobal;
       'api::law.law': ApiLawLaw;
       'api::law-category.law-category': ApiLawCategoryLawCategory;
