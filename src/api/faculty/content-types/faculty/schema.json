@@ -79,6 +79,12 @@
       "relation": "manyToOne",
       "target": "api::faculty-category.faculty-category",
       "inversedBy": "faculties"
+    },
+    "departments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::department.department",
+      "mappedBy": "faculty"
     }
   }
 }
