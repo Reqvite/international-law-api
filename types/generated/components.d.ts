@@ -33,10 +33,10 @@ export interface BlocksFaculties extends Schema.Component {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    list: Attribute.Relation<
+    categories: Attribute.Relation<
       'blocks.faculties',
       'oneToMany',
-      'api::faculty.faculty'
+      'api::faculty-category.faculty-category'
     >;
     description: Attribute.String;
   };
