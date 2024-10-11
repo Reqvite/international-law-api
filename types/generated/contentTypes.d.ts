@@ -953,6 +953,7 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
     singularName: 'department';
     pluralName: 'departments';
     displayName: 'Department';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -989,13 +990,6 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     image: Attribute.Media<'images'> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -1008,6 +1002,13 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
       'oneToMany',
       'api::student.student'
     >;
+    description: Attribute.Blocks &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
